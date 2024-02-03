@@ -22,10 +22,13 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("white")
     # RENDER YOUR GAME HERE
+    mousepos = pygame.mouse.get_pos()
     ballpos = pygame.Vector2(ballx / 2, bally / 2)
-    ball = (screen, ballc, ballpos, ballr)
-    pygame.draw.circle(ball)
-
+    if mousepos[0] <= ballx + ballr and mousepos[0] >= ballx and mousepos[1] <= bally + ballr and mousepos[1] >= bally:
+        ballc = (0, 255, 0)
+    else:
+        ballc = (255, 0, 0)
+    pygame.draw.circle(screen, ballc, ballpos, ballr)
     # flip() the display to put your work on screen
     pygame.display.flip()
 
